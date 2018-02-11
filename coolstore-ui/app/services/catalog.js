@@ -18,7 +18,8 @@ angular.module("app")
         } else {
             $http({
                 method: 'GET',
-								url: baseUrl
+								params: {'user_key': COOLSTORE_CONFIG.API_KEY},
+								url: baseUrl                                
             }).then(function(resp) {
                 products = resp.data;
                 deferred.resolve(resp.data);

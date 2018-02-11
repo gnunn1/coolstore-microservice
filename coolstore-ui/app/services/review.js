@@ -14,7 +14,8 @@ angular.module("app")
     factory.getReviews = function(itemId) {
 		var deferred = $q.defer();
         $http({
-            method: 'GET',
+			method: 'GET',
+			params: {'user_key': COOLSTORE_CONFIG.API_KEY},			
             url: baseUrl + "/" + itemId
         }).then(function(resp) {
             deferred.resolve(resp.data);

@@ -14,6 +14,7 @@ angular.module("app")
 		var deferred = $q.defer();
 		$http({
 			   method: 'POST',
+			   params: {'user_key': COOLSTORE_CONFIG.API_KEY},			   
 			   url: baseUrl + '/checkout/' + cartId
 		   }).then(function(resp) {
 			    cart = resp.data;
@@ -59,6 +60,7 @@ angular.module("app")
 		cart.shoppingCartItemList = [];
 		$http({
 			   method: 'GET',
+			   params: {'user_key': COOLSTORE_CONFIG.API_KEY},			   
 			   url: baseUrl + '/' + cartId
 		   }).then(function(resp) {
 			    cart = resp.data;
@@ -75,6 +77,7 @@ angular.module("app")
 		var deferred = $q.defer();
 		$http({
 			method: 'DELETE',
+			params: {'user_key': COOLSTORE_CONFIG.API_KEY},			
 			url: baseUrl + '/' + cartId + '/' + product.itemId + '/' + quantity
 		}).then(function(resp) {
 			cart = resp.data;
@@ -90,6 +93,7 @@ angular.module("app")
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
+			params: {'user_key': COOLSTORE_CONFIG.API_KEY},			
 			url: baseUrl + '/' + cartId + '/' + id
 		}).then(function(resp) {
 			cart = resp.data;
@@ -105,6 +109,7 @@ angular.module("app")
 		var deferred = $q.defer();
 		$http({
 			   method: 'POST',
+			   params: {'user_key': COOLSTORE_CONFIG.API_KEY},			   
 			   url: baseUrl + '/' + cartId + '/' + product.itemId + '/' + quantity
 		   }).then(function(resp) {
 			    cart = resp.data;

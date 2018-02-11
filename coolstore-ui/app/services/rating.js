@@ -14,6 +14,7 @@ angular.module("app")
 		var deferred = $q.defer();
 		$http({
 			   method: 'POST',
+			   params: {'user_key': COOLSTORE_CONFIG.API_KEY},			   
 			   url: baseUrl + "/" + itemId + "/" + ratingVal,
 		   }).then(function(resp) {
 			   	deferred.resolve(resp.data);
