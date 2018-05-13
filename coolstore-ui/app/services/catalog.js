@@ -18,6 +18,7 @@ angular.module("app")
         } else {
             $http({
                 method: 'GET',
+                                params: {'user_key': COOLSTORE_CONFIG.API_KEY},
 								url: baseUrl
             }).then(function(resp) {
                 products = resp.data;
