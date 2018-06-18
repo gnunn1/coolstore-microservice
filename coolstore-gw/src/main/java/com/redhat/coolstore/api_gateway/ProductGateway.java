@@ -28,6 +28,7 @@ import org.apache.camel.component.http4.HttpMethods;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.apache.camel.component.jackson.ListJacksonDataFormat;
 import org.apache.camel.model.dataformat.JsonLibrary;
+import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,13 +69,24 @@ public class ProductGateway extends RouteBuilder {
         JacksonDataFormat productFormatter = new ListJacksonDataFormat();
         productFormatter.setUnmarshalType(Product.class);
 
-       
+        restConfiguration().component("servlet")
+            .bindingMode(RestBindingMode.auto).apiContextPath("/api-docs").contextPath("/api").apiProperty("host", "")
+            .apiProperty("api.title", "CoolStore Microservice API Gateway")
+            .apiProperty("api.version", "1.0.0")
+            .apiProperty("api.description", "The API of the gateway which fronts the various backend microservices in the CoolStore")
+            .apiProperty("api.contact.name", "Red Hat Developers")
+            .apiProperty("api.contact.email", "developers@redhat.com")
+            .apiProperty("api.contact.url", "https://developers.redhat.com")
+            .enableCORS(true) 
+            .corsAllowCredentials(true)
+            .corsHeaderProperty("Access-Control-Allow-Origin","*")
+            .corsHeaderProperty("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");            
 
         rest("/products/").description("Product Catalog Service").produces(MediaType.APPLICATION_JSON_VALUE)
-        // Handle CORS Pre-flight requests
-        .options("/")
-            .route().id("productsOptions").end()
-        .endRest()
+        // // Handle CORS Pre-flight requests
+        // .options("/")
+        //     .route().id("productsOptions").end()
+        // .endRest()
 
         .get("/").description("Get product catalog").outType(Product.class)
             .route().id("productRoute")
