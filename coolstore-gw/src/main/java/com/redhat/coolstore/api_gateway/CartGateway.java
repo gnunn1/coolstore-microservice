@@ -75,21 +75,24 @@ public class CartGateway extends RouteBuilder {
             .apiProperty("api.description", "The API of the gateway which fronts the various backend microservices in the CoolStore")
             .apiProperty("api.contact.name", "Red Hat Developers")
             .apiProperty("api.contact.email", "developers@redhat.com")
-            .apiProperty("api.contact.url", "https://developers.redhat.com");
-
+            .apiProperty("api.contact.url", "https://developers.redhat.com")
+            .enableCORS(true) 
+            .corsAllowCredentials(true)
+            .corsHeaderProperty("Access-Control-Allow-Origin","*")
+            .corsHeaderProperty("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");            
 
         rest("/cart/").description("Personal Shopping Cart Service")
             .produces(MediaType.APPLICATION_JSON_VALUE)
 
             // Handle CORS Preflight requests
-            .options("/{cartId}")
-            .route().id("getCartOptionsRoute").end().endRest()
-            .options("/checkout/{cartId}")
-            .route().id("checkoutCartOptionsRoute").end().endRest()
-            .options("/{cartId}/{tmpId}")
-            .route().id("cartSetOptionsRoute").end().endRest()
-            .options("/{cartId}/{itemId}/{quantity}")
-            .route().id("cartAddDeleteOptionsRoute").end().endRest()
+            // .options("/{cartId}")
+            // .route().id("getCartOptionsRoute").end().endRest()
+            // .options("/checkout/{cartId}")
+            // .route().id("checkoutCartOptionsRoute").end().endRest()
+            // .options("/{cartId}/{tmpId}")
+            // .route().id("cartSetOptionsRoute").end().endRest()
+            // .options("/{cartId}/{itemId}/{quantity}")
+            // .route().id("cartAddDeleteOptionsRoute").end().endRest()
 
             .post("/checkout/{cartId}").description("Finalize shopping cart and process payment")
                 .param().name("cartId").type(RestParamType.path).description("The ID of the cart to process").dataType("string").endParam()
