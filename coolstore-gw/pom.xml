@@ -10,6 +10,7 @@
 
     <description>Coolstore gateway application running Camel and Hystrix in Spring Boot</description>
 
+    <!--
     <properties>
        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
         <fabric8.version>2.2.192</fabric8.version>
@@ -18,6 +19,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
       </properties>
+    -->
+
+    <properties>
+      <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
+      <fabric8.version>3.0.11.fuse-000039-redhat-1</fabric8.version>
+      <fabric8.maven.plugin.version>3.5.33.fuse-000067-redhat-1</fabric8.maven.plugin.version>
+      <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    </properties>      
 
     <dependencyManagement>
         <dependencies>
