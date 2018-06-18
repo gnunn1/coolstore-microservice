@@ -70,7 +70,7 @@ public class RatingGateway extends RouteBuilder {
             .apiProperty("api.contact.email", "developers@redhat.com")
             .apiProperty("api.contact.url", "https://developers.redhat.com");
 
-            
+
         rest("/rating").description("Product Rating Service")
             .produces(MediaType.APPLICATION_JSON_VALUE)
 

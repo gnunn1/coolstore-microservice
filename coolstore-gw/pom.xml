@@ -10,7 +10,6 @@
 
     <description>Coolstore gateway application running Camel and Hystrix in Spring Boot</description>
 
-    <!--
     <properties>
        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
         <fabric8.version>2.2.192</fabric8.version>
@@ -19,16 +18,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
       </properties>
-    -->
-
-    <properties>
-      <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
-      <fabric8.version>3.0.11.fuse-000039-redhat-1</fabric8.version>
-      <fabric8.maven.plugin.version>3.5.33.fuse-000067-redhat-1</fabric8.maven.plugin.version>
-      <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-    </properties>      
 
     <dependencyManagement>
         <dependencies>
@@ -52,34 +41,6 @@
     <dependencies>
         
         <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <!-- camel -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-http-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-servlet-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jackson-starter</artifactId>
-        </dependency>        
-
-      <!--
        <dependency>
           <groupId>org.apache.camel</groupId>
           <artifactId>camel-spring-boot-starter</artifactId>
@@ -96,6 +57,15 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet-starter</artifactId>
         </dependency>
+       <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-hystrix-starter</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http4-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jsonpath-starter</artifactId>
@@ -104,18 +74,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jackson-starter</artifactId>
         </dependency>
-      -->
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-http4-starter</artifactId>
-        </dependency>
-
-       <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-hystrix-starter</artifactId>
-        </dependency>
-        
          <dependency>
           <groupId>org.apache.camel</groupId>
           <artifactId>camel-swagger-java-starter</artifactId>
@@ -151,44 +109,6 @@
         </dependency>
         
     </dependencies>
-    <repositories>
-      <repository>
-        <id>jboss.ea</id>
-        <name>JBoss Early Adopter</name>
-        <url>https://maven.repository.redhat.com/earlyaccess/all</url>
-      </repository>
-      <repository>
-            <id>redhat.ga</id>
-            <name>Red Hat General Availability Repository</name>
-            <url>https://maven.repository.redhat.com/ga</url>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-            <releases>
-              <enabled>true</enabled>
-              <updatePolicy>never</updatePolicy>
-            </releases>
-      </repository>
-    </repositories>
-    <pluginRepositories>
-    <pluginRepository>
-        <id>jboss.ea</id>
-        <name>JBoss Early Adopter</name>
-        <url>https://maven.repository.redhat.com/earlyaccess/all</url>
-      </pluginRepository>
-      <pluginRepository>
-            <id>redhat.ga</id>
-            <name>Red Hat General Availability Repository</name>
-            <url>https://maven.repository.redhat.com/ga</url>
-            <snapshots>
-              <enabled>false</enabled>
-            </snapshots>
-            <releases>
-              <enabled>true</enabled>
-              <updatePolicy>never</updatePolicy>
-            </releases>
-          </pluginRepository>
-    </pluginRepositories>    
 
     <build>
         <finalName>coolstore-gw</finalName>
