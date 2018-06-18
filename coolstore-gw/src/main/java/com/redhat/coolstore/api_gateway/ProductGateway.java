@@ -69,6 +69,7 @@ public class ProductGateway extends RouteBuilder {
         JacksonDataFormat productFormatter = new ListJacksonDataFormat();
         productFormatter.setUnmarshalType(Product.class);
 
+<<<<<<< HEAD
         //restConfiguration().component("servlet")
             // .bindingMode(RestBindingMode.auto).apiContextPath("/api-docs").contextPath("/api").apiProperty("host", "")
             // .apiProperty("api.title", "CoolStore Microservice API Gateway")
@@ -83,6 +84,20 @@ public class ProductGateway extends RouteBuilder {
             // .corsHeaderProperty("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");            
 
         LOG.error("**** Products registered ****");
+=======
+        restConfiguration().component("servlet")
+            .bindingMode(RestBindingMode.auto).apiContextPath("/api-docs").contextPath("/api").apiProperty("host", "")
+            .apiProperty("api.title", "CoolStore Microservice API Gateway")
+            .apiProperty("api.version", "1.0.0")
+            .apiProperty("api.description", "The API of the gateway which fronts the various backend microservices in the CoolStore")
+            .apiProperty("api.contact.name", "Red Hat Developers")
+            .apiProperty("api.contact.email", "developers@redhat.com")
+            .apiProperty("api.contact.url", "https://developers.redhat.com")
+            .enableCORS(true) 
+            .corsAllowCredentials(true)
+            .corsHeaderProperty("Access-Control-Allow-Origin","*")
+            .corsHeaderProperty("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");            
+>>>>>>> 059ad5a516b207fe9643c6d0c776695504305f9a
 
         rest("/products/").description("Product Catalog Service").produces(MediaType.APPLICATION_JSON_VALUE)
         // // Handle CORS Pre-flight requests
